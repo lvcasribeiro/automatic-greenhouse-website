@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <!-- Codificação de caracteres e escala -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+        <!-- Ícone -->
+        <link rel="shortcut icon" type="image/x-icon" href="/imagens/icone-folha.png">
+
+        <!-- Título -->
+        <title>Estufa Automática - Sobre</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/estilos/estilo.css">
+        <link rel="stylesheet" href="/estilos/sobre.css">
+
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+        <!-- Firebase -->
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Barra de navegação -->
+        <header>
+            <a class="logomarca" href="/index.html">Estufa Automática</a>
+            <div class="fas fa-bars" id="icone-menu"></div>
+
+            <ul class="barra-de-navegacao">
+                <li><a href="#">Sobre</a></li>
+                <li><a href="/paginas/culturas.html">Culturas</a></li>
+                <li><a href="/index.html">Monitoramento</a></li>
+                <li><a href="/index.html">Controle</a></li>
+                <li><a href="/paginas/dashboard.html" class="barra-de-navegacao-dashboard">Dashboard</a></li>
+            </ul>
+        </header>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Início -->
+        <section class="inicio" id="inicio">
+            <div class="texto-inicio">
+                <h1 class="monitoramento-titulo-principal">Sobre<br></h1>
+                <h2><span>Estufa Automática</span></h2>
+                <p>A Estufa Automática emergiu em 2021 ao transcorrer do Trabalho de Conclusão de Curso apresentado ao Instituto Federal de Goiás, com a missão de tornar 100% remota e automática, além de mais lucrativa, a atividade agrária em ambientes protegidos.</p>
+                <a href="#sobre"><button class="botao-contate-nos">Saiba Mais</button></a>
+            </div>
+            <div class="imagem-sobre">
+                <img src="/imagens/imagem-sobre.png" alt="Imagem: Uma mulher branca realizando a leitura de dados estatísticos.">
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Início -->
+        <section class="sobre" id="sobre">
+            <div class="subtitulo">
+                <h1>Maquete</h1>
+            </div>
+            <div class="imagens-sobre">
+                <div class="caixa-imagem-sobre">
+                    <img src="/imagens/imagem-estufa-externo.jpg" alt="">
+                </div>
+                <div class="caixa-imagem-sobre">
+                    <img src="/imagens/imagem-estufa-interno-cima.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Direitos Autorais -->
+        <div class="direitos-autorais">
+            <p>&#169; Todos os direitos reservados à Estufa Automática</p>
+        </div>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Botão para voltar ao topo -->
+        <a class="botao-voltar-ao-topo" href="#inicio" id="botao-voltar-ao-topo"><i class="fa-solid fa-arrow-up"></i></a>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- JavaScript -->
+        <script src="/codigos/menu.js"></script>
+
+        <!-- Chart JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/c1a3e9b7cb.js" crossorigin="anonymous"></script>
+    </body>
+</html>

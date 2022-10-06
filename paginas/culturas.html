@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <!-- Codificação de caracteres e escala -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+        <!-- Ícone -->
+        <link rel="shortcut icon" type="image/x-icon" href="/imagens/icone-folha.png">
+
+        <!-- Título -->
+        <title>Estufa Automática - Culturas</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/estilos/estilo.css">
+        <link rel="stylesheet" href="/estilos/culturas.css">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+        <!-- Firebase -->
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Barra de navegação -->
+        <header>
+            <a class="logomarca" href="/index.html">Estufa Automática</a>
+            <div class="fas fa-bars" id="icone-menu"></div>
+
+            <ul class="barra-de-navegacao">
+                <li><a href="/paginas/sobre.html">Sobre</a></li>
+                <li><a href="#">Culturas</a></li>
+                <li><a href="/index.html">Monitoramento</a></li>
+                <li><a href="/index.html">Controle</a></li>
+                <li><a href="/paginas/dashboard.html" class="barra-de-navegacao-dashboard">Dashboard</a></li>
+            </ul>
+        </header>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Início -->
+        <section class="inicio" id="inicio">
+            <div class="texto-inicio">
+                <h1 class="monitoramento-titulo-principal">Culturas<br></h1>
+                <h2><span>Presets e controle de culturas</span></h2>
+                <p>Os parâmetros de controle atuais estão setados de acordo com a cultura: <strong id="cultura-aplicada"></strong>.</p>
+                <a href="#controle"><button class="botao-contate-nos">Ambiente de Criação</button></a>
+            </div>
+            <div class="imagem-culturas">
+                <img src="/imagens/imagem-culturas.png" alt="Imagem: Uma mulher branca realizando a leitura de dados estatísticos.">
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Presets -->
+        <section class="monitoramento" id="monitoramento">
+            <div class="subtitulo">
+                <h1>Presets</h1>
+            </div>
+            <div class="conteudo-monitoramento">
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <div>
+                        <h2>Cebolinha</h2> <br>
+                        <div class="caixa-imagem">
+                            <img src="/imagens/imagem-cebolinha.jpg" alt="">
+                        </div>
+
+                        <div class="slider">
+                            <div class="slides">
+                                <input type="radio" name="radio-btn" id="radio1" checked>
+                                <input type="radio" name="radio-btn" id="radio2">
+                                <input type="radio" name="radio-btn" id="radio3">
+                                <input type="radio" name="radio-btn" id="radio4">
+
+                                <div class="slide first">
+                                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                    <h4>Temperatura</h4>
+                                    <p>
+                                        13 a 24 °C
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                    <h4>Umidade do ar</h4>
+                                    <p>
+                                        50 a 60 %
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                                    <h4>Umidade do solo</h4>
+                                    <p>
+                                        11 a 80 % <br>
+                                        Ter e Qui das 13:00 às 15:00
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-sun"></i>
+                                    <h4>Iluminação</h4>
+                                    <p>
+                                        Acionada em 100 Lux
+                                    </p>
+                                </div>
+
+                                <div class="navigation-auto">
+                                    <div class="auto-btn1"></div>
+                                    <div class="auto-btn2"></div>
+                                    <div class="auto-btn3"></div>
+                                    <div class="auto-btn4"></div>
+                                </div>
+                            </div>
+
+                            <div class="navigation-manual">
+                                <label for="radio1" class="manual-btn"></label>
+                                <label for="radio2" class="manual-btn"></label>
+                                <label for="radio3" class="manual-btn"></label>
+                                <label for="radio4" class="manual-btn"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="progresso-7">
+                            <div class="botao-cebolinha" id="cebolinha-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-cebolinha active" id="cebolinha-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <div>Cultura<span id="status-cebolinha"></span></div>
+                    </div>
+                </div>
+                
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <div>
+                        <h2>Manjericão</h2> <br>
+                        <div class="caixa-imagem">
+                            <img src="/imagens/imagem-manjericao.jpg" alt="">
+                        </div>
+
+                        <div class="slider">
+                            <div class="slides">
+                                <input type="radio" name="radio-btn-2" id="radio5" checked>
+                                <input type="radio" name="radio-btn-2" id="radio6">
+                                <input type="radio" name="radio-btn-2" id="radio7">
+                                <input type="radio" name="radio-btn-2" id="radio8">
+
+                                <div class="slide first">
+                                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                    <h4>Temperatura</h4>
+                                    <p>
+                                        18 a 23 °C
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                    <h4>Umidade do ar</h4>
+                                    <p>
+                                        50 a 70 %
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                                    <h4>Umidade do solo</h4>
+                                    <p>
+                                        10 a 95 % <br>
+                                        Seg e Sex das 14:00 às 16:00
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-sun"></i>
+                                    <h4>Iluminação</h4>
+                                    <p>
+                                        Acionada em 300 Lux
+                                    </p>
+                                </div>
+
+                                <div class="navigation-auto">
+                                    <div class="auto-btn5"></div>
+                                    <div class="auto-btn6"></div>
+                                    <div class="auto-btn7"></div>
+                                    <div class="auto-btn8"></div>
+                                </div>
+                            </div>
+
+                            <div class="navigation-manual">
+                                <label for="radio5" class="manual-btn"></label>
+                                <label for="radio6" class="manual-btn"></label>
+                                <label for="radio7" class="manual-btn"></label>
+                                <label for="radio8" class="manual-btn"></label>
+                            </div>
+                        </div>
+
+                        <div class="progresso-8">
+                            <div class="botao-manjericao" id="manjericao-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-manjericao active" id="manjericao-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <div>Cultura<span id="status-manjericao"></span></div>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <div>
+                        <h2>Alface</h2> <br>
+                        <div class="caixa-imagem">
+                            <img src="/imagens/imagem-alface.jpg" alt="">
+                        </div>
+                        
+                        <div class="slider">
+                            <div class="slides">
+                                <input type="radio" name="radio-btn-3" id="radio9" checked>
+                                <input type="radio" name="radio-btn-3" id="radio10">
+                                <input type="radio" name="radio-btn-3" id="radio11">
+                                <input type="radio" name="radio-btn-3" id="radio12">
+
+                                <div class="slide first">
+                                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                    <h4>Temperatura</h4>
+                                    <p>
+                                        15 a 20 °C
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                    <h4>Umidade do ar</h4>
+                                    <p>
+                                        60 a 70 %
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                                    <h4>Umidade do solo</h4>
+                                    <p>
+                                        15 a 97 % <br>
+                                        Todos os dias das 16:20 às 16:30
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-sun"></i>
+                                    <h4>Iluminação</h4>
+                                    <p>
+                                        Acionada em 360 Lux
+                                    </p>
+                                </div>
+
+                                <div class="navigation-auto">
+                                    <div class="auto-btn9"></div>
+                                    <div class="auto-btn10"></div>
+                                    <div class="auto-btn11"></div>
+                                    <div class="auto-btn12"></div>
+                                </div>
+                            </div>
+
+                            <div class="navigation-manual">
+                                <label for="radio9" class="manual-btn"></label>
+                                <label for="radio10" class="manual-btn"></label>
+                                <label for="radio11" class="manual-btn"></label>
+                                <label for="radio12" class="manual-btn"></label>
+                            </div>
+                        </div>
+
+                        <div class="progresso-9">
+                            <div class="botao-alface" id="alface-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-alface active" id="alface-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <div>Cultura<span id="status-alface"></span></div>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <div>
+                        <h2>Coentro</h2> <br>
+                        <div class="caixa-imagem">
+                            <img src="/imagens/imagem-coentro.jpg" alt="">
+                        </div>
+                        
+                        <div class="slider">
+                            <div class="slides">
+                                <input type="radio" name="radio-btn-4" id="radio13" checked>
+                                <input type="radio" name="radio-btn-4" id="radio14">
+                                <input type="radio" name="radio-btn-4" id="radio15">
+                                <input type="radio" name="radio-btn-4" id="radio16">
+
+                                <div class="slide first">
+                                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                    <h4>Temperatura</h4>
+                                    <p>
+                                        17 a 23 °C
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                    <h4>Umidade do ar</h4>
+                                    <p>
+                                        50 a 75 %
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                                    <h4>Umidade do solo</h4>
+                                    <p>
+                                        20 a 94 % <br>
+                                        Seg, Qua e Sex das 09:40 às 09:50
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-sun"></i>
+                                    <h4>Iluminação</h4>
+                                    <p>
+                                        Acionada em 210 Lux
+                                    </p>
+                                </div>
+
+                                <div class="navigation-auto">
+                                    <div class="auto-btn13"></div>
+                                    <div class="auto-btn14"></div>
+                                    <div class="auto-btn15"></div>
+                                    <div class="auto-btn16"></div>
+                                </div>
+                            </div>
+
+                            <div class="navigation-manual">
+                                <label for="radio13" class="manual-btn"></label>
+                                <label for="radio14" class="manual-btn"></label>
+                                <label for="radio15" class="manual-btn"></label>
+                                <label for="radio16" class="manual-btn"></label>
+                            </div>
+                        </div>
+
+                        <div class="progresso-10">
+                            <div class="botao-coentro" id="coentro-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-coentro active" id="coentro-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <div>Cultura<span id="status-coentro"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Criação de culturas -->
+        <section class="controle" id="controle">
+            <div class="subtitulo">
+                <h1 class="controle-titulo">Criação</h1>
+            </div>
+            <div class="conteudo-criacao-de-culturas">
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-controle-criacao">
+                    <i class="fa-2x fa-brands fa-pagelines"></i>
+                    <div>
+                        <h3 id="nome-da-cultura" style="margin-top: 10px;">...</h3> <br>
+                        <div class="caixa-imagem">
+                            <img src="/imagens/imagem-culturaX.png" alt="">
+                        </div>
+
+                        <div class="slider">
+                            <div class="slides">
+                                <input type="radio" name="radio-btn-5" id="radio17" checked>
+                                <input type="radio" name="radio-btn-5" id="radio18">
+                                <input type="radio" name="radio-btn-5" id="radio19">
+                                <input type="radio" name="radio-btn-5" id="radio20">
+
+                                <div class="slide first">
+                                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                    <h4>Temperatura</h4>
+                                    <p>
+                                        <span id="temperatura-min">-</span> a <span id="temperatura-max">-</span> °C
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                    <h4>Umidade do ar</h4>
+                                    <p>
+                                        <span id="umid-ar-min">-</span> a <span id="umid-ar-max">-</span> %
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                                    <h4>Umidade do solo</h4>
+                                    <p>
+                                        <span id="umid-solo-min">-</span> a <span id="umid-solo-max">-</span> % <br>
+                                        <span id="dia-da-semana">-</span>x das <span id="hora-min">-</span>:<span id="minuto-min">-</span> às <span id="hora-max">-</span>:<span id="minuto-max">-</span>
+                                    </p>
+                                </div>
+                                <div class="slide">
+                                    <i class="fa-2x fa-solid fa-sun"></i>
+                                    <h4>Iluminação</h4>
+                                    <p>
+                                        Acionada em <span id="luminosidade-min">-</span> Lux
+                                    </p>
+                                </div>
+
+                                <div class="navigation-auto">
+                                    <div class="auto-btn17"></div>
+                                    <div class="auto-btn18"></div>
+                                    <div class="auto-btn19"></div>
+                                    <div class="auto-btn20"></div>
+                                </div>
+                            </div>
+
+                            <div class="navigation-manual">
+                                <label for="radio17" class="manual-btn"></label>
+                                <label for="radio18" class="manual-btn"></label>
+                                <label for="radio19" class="manual-btn"></label>
+                                <label for="radio20" class="manual-btn"></label>
+                            </div>
+                        </div>
+
+                        <div class="progresso-11" id="display-criar-nova-cultura">
+                            <div class="botao-alternativa" id="alternativa-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-alternativa active" id="alternativa-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <div>Cultura<span id="status-alternativa"></span></div>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="formulario-de-contato">
+                    <div class="subtitulo formulario-criacao">
+                        <h4>Parâmetros da cultura</h4>
+                    </div>
+
+                    <div class="slider-2">
+                        <div class="slides">
+                            <input type="radio" name="radio-btn-6" id="radio21" checked>
+                            <input type="radio" name="radio-btn-6" id="radio22">
+                            <input type="radio" name="radio-btn-6" id="radio23">
+                            <input type="radio" name="radio-btn-6" id="radio24">
+
+                            <div class="slide-2 first">
+                                <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                                <h4>Temperatura</h4>
+                                <div class="texto-criacao">
+                                    <p>
+                                        Insira os valores das temperaturas máxima e mínima para controle de refrigeramento e aquecimendo da estufa:
+                                    </p>
+                                </div>
+                                <form target="_blank" class="formulario-criacao-de-culturas">
+                                    <input type="text" placeholder="Nome da cultura" id="nome-da-cultura-input" onkeyup="estaVazio()" class="teste">
+                                    <input type="number" placeholder="Temperatura máxima" id="temperatura-max-input" onkeyup="estaVazio()" class="teste">
+                                    <input type="number" placeholder="Temperatura mínima" id="temperatura-min-input" onkeyup="estaVazio()" class="teste">
+                                </form>
+                                <div class="warnings">
+                                    <i class="fa fa-solid fa-warning"></i>
+                                    <strong>Atenção:</strong> Para evitar sobrecarga dos atuadores, recomenda-se inserir valores com uma diferença mínima de 5 unidades.
+                                </div>
+                            </div>
+                            <div class="slide-2">
+                                <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                                <h4>Umidade do ar</h4>
+                                <div class="texto-criacao">
+                                    <p>
+                                        Insira os valores de umidade do ar máxima e mínima para controle de  umidificação e desumificação da estufa:
+                                    </p>
+                                </div>
+                                <form target="_blank" class="formulario-criacao-de-culturas">
+                                    <input type="number" placeholder="Umidade máxima do ar" id="umid-ar-max-input" onkeyup="estaVazio()" class="teste">
+                                    <input type="number" placeholder="Umidade mínima do ar" id="umid-ar-min-input" onkeyup="estaVazio()" class="teste">
+                                </form>
+                            </div>
+                            <div class="slide-2">
+                                <i class="fa-2x fa-solid fa-glass-water"></i>
+                                <h4>Umidade do solo</h4>
+                                <div class="texto-criacao">
+                                    <p>
+                                        Insira os valores de umidade do solo máxima e mínima, bem como os horários de início e fim de irrigação da cultura:
+                                    </p>
+                                </div>
+                                <form target="_blank" class="formulario-criacao-de-culturas">
+                                    <input type="number" placeholder="Umidade máxima do solo" id="umid-solo-max-input" onkeyup="estaVazio()" class="teste">
+                                    <input type="number" placeholder="Umidade mínima do solo" id="umid-solo-min-input" onkeyup="estaVazio()" class="teste">
+                                    <select id="dia-da-semana-input" onkeyup="estaVazio()" class="teste input">
+                                        <option value="1">1 dia por semana</option>
+                                        <option value="2">2 dias por semana</option>
+                                        <option value="3">3 dias por semana</option>
+                                        <option value="4">4 dias por semana</option>
+                                        <option value="5">5 dias por semana</option>
+                                        <option value="6">6 dias por semana</option>
+                                        <option value="7">7 dias por semana</option>
+                                    </select> <br>
+                                    <div class="teste teste-4">
+                                        <input type="number" placeholder="hh" id="hora-min-input" onkeyup="estaVazio()" class="teste hora">
+                                        <input type="number" placeholder="mm" id="minuto-min-input" onkeyup="estaVazio()" class="teste minuto">
+                                        <input type="number" placeholder="hh" id="hora-max-input" onkeyup="estaVazio()" class="teste hora hora-2">
+                                        <input type="number" placeholder="mm" id="minuto-max-input" onkeyup="estaVazio()" class="teste minuto">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="slide-2">
+                                <i class="fa-2x fa-solid fa-sun"></i>
+                                <h4>Iluminação</h4>
+                                <div class="texto-criacao">
+                                    <p>
+                                        Insira o valor de luminosidade mínima para controle de iluminação artificial da estufa:
+                                    </p>
+                                </div>
+                                <form target="_blank" class="formulario-criacao-de-culturas">
+                                    <input type="number" placeholder="Luminosidade mínima" id="luminosidade-min-input" onkeyup="estaVazio()" class="teste">
+                                </form>
+                                <div class="warnings">
+                                    <i class="fa fa-solid fa-warning"></i>
+                                    <strong>Atenção:</strong> Caso deseje que a iluminação artificial não seja utilizada, insira 0.
+                                </div>
+                                <div class="alright" id="mensagem-de-fim-de-criacao">
+                                    <i class="fa fa-solid fa-check"></i>
+                                    <strong>Pronto!</strong> Cultura criada com sucesso, para ativá-la pressione o botão do card acima.
+                                </div>
+                            </div>
+
+                            <div class="navigation-auto-2">
+                                <div class="auto-btn21"></div>
+                                <div class="auto-btn22"></div>
+                                <div class="auto-btn23"></div>
+                                <div class="auto-btn24"></div>
+                            </div>
+                        </div>
+
+                        <div class="navigation-manual-2">
+                            <label for="radio21" class="manual-btn"></label>
+                            <label for="radio22" class="manual-btn"></label>
+                            <label for="radio23" class="manual-btn"></label>
+                            <label for="radio24" class="manual-btn"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Direitos Autorais -->
+        <div class="direitos-autorais">
+            <p style="text-align: center;">&#169; Todos os direitos reservados à Estufa Automática</p>
+        </div>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Botão para voltar ao topo -->
+        <a class="botao-voltar-ao-topo" href="#inicio" id="botao-voltar-ao-topo"><i class="fa-solid fa-arrow-up"></i></a>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- JavaScript -->
+        <script src="/codigos/menu.js"></script>
+        <script src="/codigos/culturas.js"></script>
+        <script src="/codigos/botao-nova-cultura.js"></script>
+
+        <!-- Chart JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/c1a3e9b7cb.js" crossorigin="anonymous"></script>
+    </body>
+</html>
