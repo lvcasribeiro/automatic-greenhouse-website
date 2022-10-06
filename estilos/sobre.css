@@ -1,0 +1,126 @@
+/* --------------- --------------- --------------- --------------- --------------- */
+
+/* Fonte Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* Padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* --------------- --------------- --------------- --------------- --------------- */
+
+/* Início */
+.imagem-sobre {
+    width: 700px;
+    height: 500px;
+    margin-top: 5vh;
+}
+
+.imagem-sobre img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* --------------- --------------- --------------- --------------- --------------- */
+
+/* Imagens */
+.caixa-imagem-sobre {
+    width: 300px;
+    height: 300px;
+    margin: 5vh auto;
+    margin-bottom: 0;
+}
+
+.caixa-imagem-sobre img {
+    width: 100%;
+    height: 100%;
+    /* border-radius: 50%; */
+    border: 4px solid #DAD7CD;
+}
+
+/* --------------- --------------- --------------- --------------- --------------- */
+
+/* Início */
+.conteudo-sobre {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-color: #1A2721;
+    justify-content: space-around;
+    gap: 10%;
+    padding-bottom: 5vh;
+    padding-left: 10rem;
+}
+
+.imagens-sobre {
+    display: flex;
+    flex-direction: row;
+}
+
+.texto-sobre {
+    max-width: 700px;
+    color: #DAD7CD;
+}
+
+.texto-sobre h1 {
+    font-size: var(--tamanho-h1);
+    letter-spacing: var(--espacamento);
+}
+
+.texto-sobre span {
+    color: var(--cor-secundaria);
+}
+
+.texto-sobre h2 {
+    font-size: var(--tamanho-h2);
+    margin: var(--m-1) 0;
+    letter-spacing: var(--espacamento);
+}
+
+.texto-sobre p {
+    font-size: var(--tamanho-p);
+    margin-bottom: var(--m-4);
+    line-height: 22px;
+    max-width: 75%;
+}
+
+.imagem-sobre img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* --------------- --------------- --------------- --------------- --------------- */
+
+@media (max-width: 1250px) {
+    .caixa-imagem-sobre {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .imagens-sobre {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .texto-sobre {
+        width: 100%;
+        padding: 0;
+    }
+
+    .imagem-sobre {
+        display: none;
+    }
+}
