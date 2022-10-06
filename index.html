@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <!-- Codificação de caracteres e escala -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+        <!-- Ícone -->
+        <link rel="shortcut icon" type="image/x-icon" href="/imagens/icone-folha.png">
+
+        <!-- Título -->
+        <title>Estufa Automática</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/estilos/estilo.css">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+        <!-- Firebase -->
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Barra de navegação -->
+        <header>
+            <a class="logomarca" href="#inicio">Estufa Automática</a>
+            <div class="fas fa-bars" id="icone-menu"></div>
+
+            <ul class="barra-de-navegacao">
+                <li><a href="/paginas/sobre.html">Sobre</a></li>
+                <li><a href="/paginas/culturas.html">Culturas</a></li>
+                <li><a href="#monitoramento">Monitoramento</a></li>
+                <li><a href="#controle">Controle</a></li>
+                <li><a href="/paginas/dashboard.html" class="barra-de-navegacao-dashboard">Dashboard</a></li>
+            </ul>
+        </header>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Início -->
+        <section class="inicio" id="inicio">
+            <div class="texto-inicio">
+                <h1 class="monitoramento-titulo-principal">Monitoramento e Controle<br></h1>
+                <h2><span>Atualizações em tempo real</span></h2>
+                <p>Automatize e controle sua rede de processo agrícola em ambiente protegido. Tenha acesso às informações de suas plantações em tempo real e de forma totalmente remota.</p>
+                <a href="#contato"><button class="botao-contate-nos">Contate-nos</button></a>
+            </div>
+            <div class="imagem-inicio">
+                <img src="/imagens/imagem-inicio.png" alt="Imagem: Uma mulher branca e um homem negro, cientistas, realizando a leitura de dados estatísticos e um béquer ao centro.">
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Monitoramento -->
+        <section class="monitoramento" id="monitoramento">
+            <div class="subtitulo">
+                <h1>Monitoramento</h1>
+            </div>
+
+            <div class="conteudo-monitoramento">
+                
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <i class="icon1 fa-2x fa-solid fa-droplet"></i>
+                    <div>
+                        <h2><span id="valor-de-umidade"></span> %</h2> <br>
+                        <p>Umidade relativa do ar</p>
+                    </div>
+                </div>
+                
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <i class="icon1 fa-2x fa-solid fa-temperature-empty"></i>
+                    <div>
+                        <h2><span id="valor-de-temperatura"></span> °C</h2> <br>
+                        <p>Temperatura ambiente</p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <i class="fa-2x fa-solid fa-sun"></i>
+                    <div>
+                        <h2><span id="valor-de-luminosidade"></span> Lux</h2> <br>
+                        <p>Iluminação ambiente</p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-monitoramento">
+                    <i class="fa-2x fa-solid fa-glass-water"></i>
+                    <div>
+                        <h2><span id="valor-de-umidade-do-solo"></span> %</h2> <br>
+                        <p>Umidade do solo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Controle -->
+        <section class="controle" id="controle">
+            <div class="subtitulo">
+                <h1 class="controle-titulo">Controle</h1>
+            </div>
+            <div class="conteudo-controle">
+                <!-- Controle -->
+                <div class="caixa-controle">
+                    <h4>Controle de Atuadores</h4>
+                    <div>
+                        <div class="progresso-7">
+                            <div class="botao-controle-manual" id="controle-manual-desligado">
+                                <div class = "inner-circle"></div>
+                            </div>
+                            <div class="botao-controle-manual active" id="controle-manual-ligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Controle<span id="status-controle-manual"></span></p>
+                    </div>
+                </div>
+            </div>
+            <hr class="linha-horizontal">
+            <div class="conteudo-controle">
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-controle">
+                    <i class="fa-solid fa-2x fa-lightbulb"></i>
+                    <div>
+                        <div class="progresso-1">
+                            <div class="botao-iluminacao-artificial" id="iluminacao-artificial-desligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-iluminacao-artificial active" id="iluminacao-artificial-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Iluminação artificial<span id="status-iluminacao-artificial"></span></p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-controle">
+                    <i class="fa-2x fa-solid fa-snowflake"></i>
+                    <div>
+                        <div class="progresso-2">
+                            <div class="botao-resfriamento" id="resfriamento-desligado">
+                                <div class = "inner-circle"></div>
+                            </div>
+                            <div class="botao-resfriamento active" id="resfriamento-ligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Resfriamento<span id="status-resfriamento"></span></p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <div class="caixa-controle">
+                    <i class="fa-2x fa-solid fa-fire"></i>
+                    <div>
+                        <div class="progresso-3">
+                            <div class="botao-aquecimento" id="aquecimento-desligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-aquecimento active" id="aquecimento-ligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Aquecimento<span id="status-aquecimento"></span></p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <!-- Irrigação -->
+                <div class="caixa-controle">
+                    <i class="fa-2x fa-solid fa-faucet-drip"></i>
+                    <div>
+                        <div class="progresso-4">
+                            <div class="botao-irrigacao" id="irrigacao-desligada">
+                                <div class = "inner-circle"></div>
+                            </div>
+                            <div class="botao-irrigacao active" id="irrigacao-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Irrigação<span id="status-irrigacao"></span></p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <!-- Exaustor -->
+                <div class="caixa-controle">
+                    <i class="fa-2x fa-solid fa-fan"></i>
+                    <div>
+                        <div class="progresso-5">
+                            <div class="botao-exaustor" id="exaustor-desligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                            <div class="botao-exaustor active" id="exaustor-ligado">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Umidificação<span id="status-exaustor"></span></p>
+                    </div>
+                </div>
+
+                <!-- --------------- --------------- --------------- -->
+                <!-- Janelas -->
+                <div class="caixa-controle">
+                    <i class="fa-2x fa-solid fa-dungeon"></i>
+                    <div>
+                        <div class="progresso-6">
+                            <div class="botao-janela" id="janela-desligada">
+                                <div class = "inner-circle"></div>
+                            </div>
+                            <div class="botao-janela active" id="janela-ligada">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                        <p>Janela<span id="status-janela"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Contato -->
+        <section class="contato" id="contato">
+            <div class="subtitulo">
+                <h1>Contato</h1>
+            </div>
+            <div class="conteudo-contato">
+                <div class="informacoes-de-contato">
+                    <div class="caixa-de-informacao">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+55 (62) 99944-4381</p>
+                    </div>
+                    <div class="caixa-de-informacao">
+                        <i class="fas fa-envelope-open"></i>
+                        <p>lucas.and.rib@gmail.com</p>
+                    </div>
+                    <div class="caixa-de-informacao">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Goiânia - Goiás, Brasil</p>
+                    </div>
+                    <div class="caixa-de-informacao midias-sociais">
+                        <a href="https://www.linkedin.com/in/lucas-anderson-ribeiro" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/lvcasribeiro/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/lvquinhax/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="formulario-de-contato">
+                    <form action="https://formsubmit.co/lucas.and.rib@gmail.com" method="POST" target="_blank" class="formulario-contato">
+                        <input type="text" name="Nome:" placeholder="Nome" required>
+                        <input type="email" name="E-mail:" placeholder="E-mail" required>
+                        <input type="text" name="Mensagem:" placeholder="Mensagem..." class="formulario-de-contato-mensagem">
+                        <input type="submit" class="botao-enviar-formulario" value="Enviar">
+
+                        <input type="hidden" name="_subject" value="Novo formulário de contato - Portfólio!">
+                        <input type="hidden" name="_captcha" value="false">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Direitos Autorais -->
+        <div class="direitos-autorais">
+            <p>&#169; Todos os direitos reservados à Estufa Automática</p>
+        </div>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- Botão para voltar ao topo -->
+        <a class="botao-voltar-ao-topo" href="#inicio" id="botao-voltar-ao-topo"><i class="fa-solid fa-arrow-up"></i></a>
+
+        <!-- --------------- --------------- --------------- --------------- --------------- -->
+
+        <!-- JavaScript -->
+        <script src="/codigos/menu.js"></script>
+
+        <!-- Chart JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/c1a3e9b7cb.js" crossorigin="anonymous"></script>
+    </body>
+</html>
